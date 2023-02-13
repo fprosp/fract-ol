@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:41:55 by fprosper          #+#    #+#             */
-/*   Updated: 2023/02/12 18:31:04 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/02/13 21:05:05 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,8 @@ int	main(int argc, char **argv)
 				[sierpinski] or [mandelbroot] or [julia + 'prm_1' 'prm_2']\n");
 		return (EXIT_FAILURE);
 	}
-	if (plot_def(&strc, argv) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	if (win_init(&strc, argv) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	if (plot_exe(&strc, argv) == EXIT_FAILURE)
+	if (plot_def(&strc, argv) == EXIT_FAILURE  \
+				&& plot_exe(&strc, argv) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

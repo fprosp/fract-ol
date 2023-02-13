@@ -6,23 +6,20 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 19:03:02 by fprosper          #+#    #+#             */
-/*   Updated: 2023/02/12 18:30:58 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/02/13 21:30:53 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-
-# define ALT 500
-# define LARG 500 
-# define MAX_ITERATIONS 80
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
 # include "../mlx/mlx.h"
 # include <math.h>
-# include <stdio.h>
-
+# define ALT 500
+# define LARG 500 
+# define MAX_ITERATIONS 80
 
 typedef struct	s_data 
 {
