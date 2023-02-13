@@ -6,17 +6,18 @@
 #    By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 20:13:10 by fprosper          #+#    #+#              #
-#    Updated: 2023/02/03 17:17:44 by fprosper         ###   ########.fr        #
+#    Updated: 2023/02/12 18:15:31 by fprosper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= fractal
-SRCS			= main.c win.c julia.c mandelbrot.c sierpinski.c
-OBJS			= $(SRCS:.c=.o)
+NAME			=	fractal
+SRCS			=	main.c plot_def.c win_life.c plot_exe.c sierpinski.c \
+					mandelbrot.c julia.c
+OBJS			= 	$(SRCS:.c=.o)
 
-CC				= gcc
-RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -I.
+CC				= 	gcc
+RM				= 	rm -f
+CFLAGS			= 	-Wall -Wextra -Werror -lm -I.
 
 all:			$(NAME)
 

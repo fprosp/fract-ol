@@ -49,12 +49,12 @@ int	jpar_check(t_data *strc, char **argv)
 			return (EXIT_FAILURE);
         while (argv[i][j] != '\0')
         {
-            if (ft_isdigit((int)argv[j]) == 0
-                && argv[i][j] != ' ' && argv[i][j] != '-' 
-				&& argv[i][j] != '+' && argv[i][j] != '.')
+            if (ft_isdigit((int)argv[j]) == 0 \
+                	&& argv[i][j] != ' ' && argv[i][j] != '-' \
+					&& argv[i][j] != '+' && argv[i][j] != '.')
                 return (EXIT_FAILURE);
-            if ((argv[i][j]== '-' || argv[i][j] == '+' )
-                && (ft_isdigit((int)argv[i][j + 1]) == 0 || argv[i][j] == '\0'))
+            if ((argv[i][j]== '-' || argv[i][j] == '+' ) \
+            		&& (ft_isdigit((int)argv[i][j + 1]) == 0 || argv[i][j] == '\0'))
                 return (EXIT_FAILURE);
             j++;
         }
@@ -63,17 +63,17 @@ int	jpar_check(t_data *strc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
-
 int plot_def(t_data *strc, char **argv)
 {
 	strc->sierpinski = 0;
 	strc->mandelbrot = 0;
 	strc->julia = 0;
-	if (ft_strncmp("sierpinski", argv[1], 10) == 0)
+	if (ft_strncmp("sierpinski", argv[1], 10) == EXIT_SUCCESS)
 		strc->sierpinski = 1;
-	else if (ft_strncmp("mandelbrot", argv[1], 10) == 0)
+	else if (ft_strncmp("mandelbrot", argv[1], 10) == EXIT_SUCCESS)
 		strc->mandelbrot = 1;
-	else if (ft_strncmp("julia", argv[1], 5) == 0 && jpar_check(strc, argv) == 0)
+	else if (ft_strncmp("julia", argv[1], 5) == EXIT_SUCCESS \
+			&& jpar_check(strc, argv) == EXIT_SUCCESS)
 	{
 		strc->jprm_1 = atof(argv[2]);
     	strc->jprm_2 = atof(argv[3]);
