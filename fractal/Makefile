@@ -6,7 +6,7 @@
 #    By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 20:32:19 by fprosper          #+#    #+#              #
-#    Updated: 2023/02/13 21:34:11 by fprosper         ###   ########.fr        #
+#    Updated: 2023/02/13 21:39:47 by fprosper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,6 @@ OBJS			=	$(SRCS:.c=.o)
 CC				=	gcc
 RM				=	rm -f
 CFLAGS			=	-Wall -Wextra -Werror -Imlx -c
-
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 $(NAME):		$(OBJS)
 				make -C ./libft
