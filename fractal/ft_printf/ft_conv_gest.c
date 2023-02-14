@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 11:51:27 by fprosper          #+#    #+#             */
-/*   Updated: 2022/05/23 15:00:42 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/01/16 02:17:26 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,11 @@ int	nc_gen(unsigned long ptr)
 int	op(char *a_c, unsigned long ptr, char a, int base)
 {
 	int	i;
-	int	div_int;
 	int	rest_int;
 
 	i = 0;
 	while (ptr > 0)
 	{
-		div_int = ptr / base;
 		rest_int = ptr % base;
 		if (rest_int >= 10)
 			a_c[i] = a + rest_int - 10;

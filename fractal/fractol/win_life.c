@@ -27,10 +27,8 @@ void	my_mlx_pixel_put(t_data *strc)
 	*(unsigned int*)dst = strc->red;
 }
 
-int	title_gen(t_data *strc, char **argv)
+int	title_gen(t_data *strc)
 {
-	char *tmp;
-
 	strc->plot_str = malloc(sizeof(char) * 34);
 	if (!strc->plot_str)
 		return (EXIT_FAILURE);
@@ -39,31 +37,13 @@ int	title_gen(t_data *strc, char **argv)
 	else if (strc->mandelbrot == 1)
 		strc->plot_str = "Frattale di Mandelbrot";
 	else if (strc->julia == 1)
-	{
-		strc->plot_str = "Frattale di Julia con parametri: ";
-		tmp = strc->plot_str;
-		strc->plot_str = ft_strjoin(strc->plot_str, argv[2]);
-		if (!strc->plot_str)
-		{
-			free(tmp);
-			return (EXIT_FAILURE);
-		}
-		free(tmp);
-		tmp = strc->plot_str;
-		strc->plot_str = ft_strjoin(strc->plot_str, argv[3]);
-		if (!strc->plot_str)
-		{
-			free(tmp);
-			return (EXIT_FAILURE);
-		}
-		free(tmp);
-	}
+		strc->plot_str = "Frattale di Julia ";
 	return (EXIT_SUCCESS);
 }
 
-int win_init(t_data  *strc, char **argv)
+int win_init(t_data  *strc)
 {
-	if (title_gen(strc, argv) == EXIT_FAILURE)
+	if (title_gen(strc) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
     strc->mlx_pt = mlx_init();
 	if (strc->mlx_pt == NULL)

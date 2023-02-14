@@ -1,4 +1,4 @@
--/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   plot_def.c                                         :+:      :+:    :+:   */
@@ -36,7 +36,7 @@ double	atof(const char *str)
 	return (sign * (int_part + dec_part));
 }
 
-int	jpar_check(t_data *strc, char **argv)
+int	jpar_check(char **argv)
 {
     int i;
 	int	j;
@@ -49,7 +49,7 @@ int	jpar_check(t_data *strc, char **argv)
 			return (EXIT_FAILURE);
         while (argv[i][j] != '\0')
         {
-            if (ft_isdigit((int)argv[j]) == 0 \
+            if (ft_isdigit(argv[i][j]) == 0 \
                 	&& argv[i][j] != ' ' && argv[i][j] != '-' \
 					&& argv[i][j] != '+' && argv[i][j] != '.')
                 return (EXIT_FAILURE);
@@ -73,7 +73,7 @@ int plot_def(t_data *strc, char **argv)
 	else if (ft_strncmp("mandelbrot", argv[1], 10) == 0)
 		strc->mandelbrot = 1;
 	else if (ft_strncmp("julia", argv[1], 5) == 0 \
-			&& jpar_check(strc, argv) == 0)
+			&& jpar_check(argv) == 0)
 	{
 		strc->jprm_1 = atof(argv[2]);
     	strc->jprm_2 = atof(argv[3]);

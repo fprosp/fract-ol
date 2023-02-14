@@ -10,23 +10,24 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= fractlib.a
+NAME			=	fractlib.a
 
-SRCS	=		plot_def.c win_life.c plt_exe.c
+SRCS			=	plot_def.c win_life.c
 
-OBJS			= $(SRCS:.c=.o)
+OBJS			=	$(SRCS:.c=.o)
 
-CC				= gcc
-RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -I.
+CC				=	gcc
+RM				=	rm -f
+CFLAGS			=	-Wall -Wextra -Werror -I.
+MLXFLG			=	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
-				ar rc $(NAME) $(OBJS)
+				ar rc $(NAME) $(OBJS) $(MLXFLG)
 
 clean:
 				$(RM) $(OBJS)

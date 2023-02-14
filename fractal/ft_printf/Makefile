@@ -6,19 +6,19 @@
 #    By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/11 12:42:10 by fprosper          #+#    #+#              #
-#    Updated: 2022/05/23 14:23:48 by fprosper         ###   ########.fr        #
+#    Updated: 2022/10/18 16:40:25 by fprosper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=		ft_printf.c ft_char_gest.c ft_conv_gest.c
+NAME			= printf.a
 
-OBJS			= $(SRCS:.c=.o)
+SRCS		=	ft_printf.c ft_char_gest.c ft_conv_gest.c
 
-CC				= gcc
-RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -I.
+OBJS		=	 $(SRCS:.c=.o)
 
-NAME			= libftprintf.a
+CC			=	gcc
+RM			=	rm -f
+CFLAGS		=	-Wall -Wextra -Werror -I.
 
 all:			$(NAME)
 

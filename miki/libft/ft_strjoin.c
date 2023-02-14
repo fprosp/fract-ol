@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 12:33:58 by fprosper          #+#    #+#             */
-/*   Updated: 2023/02/12 18:33:33 by fprosper         ###   ########.fr       */
+/*   Created: 2022/03/12 10:29:00 by mtoia             #+#    #+#             */
+/*   Updated: 2022/03/18 00:36:40 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,23 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*nstr;
-	size_t	lnstr;
+	char	*united;
+	int		i;
+	int		j;
 
-	if ((!s1 && !s2) || (!s1 && s2) || (s1 && !s2))
-		return (0);
-	lnstr = ft_strlen(s1) + ft_strlen(s2) + 1;
-	nstr = (char *)malloc(sizeof(char) * lnstr);
-	if (!nstr)
-		return (0);
-	ft_memmove(nstr, s1, ft_strlen(s1));
-	ft_memmove(nstr + ft_strlen(s1), s2, ft_strlen(s2));
-	*(nstr + lnstr - 1) = '\0';
-	return (nstr);
+	i = 0;
+	j = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	united = (char *) malloc ((sizeof(char))
+			* (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (united == NULL)
+		return (NULL);
+	while (s1[j] != '\0')
+		united[i++] = s1[j++];
+	j = 0;
+	while (s2[j] != '\0')
+		united[i++] = s2[j++];
+	united[i] = '\0';
+	return (united);
 }

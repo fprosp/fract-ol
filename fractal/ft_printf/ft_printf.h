@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 15:06:42 by fprosper          #+#    #+#             */
-/*   Updated: 2022/05/23 14:29:49 by fprosper         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:02:26 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include "../libft/libft.h"
 
 int		ft_printf(const char *format, ...);
-int		ft_strlen(const char *s);
 int		ft_print_char(va_list arg);
 int		ft_putstr(char *s);
 int		ft_put_id(int n);

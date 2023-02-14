@@ -15,7 +15,7 @@
 
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
-# include "../mlx/mlx.h"
+# include "../mlx_linux/mlx.h"
 # include <math.h>
 # define ALT 500
 # define LARG 500 
@@ -26,7 +26,7 @@ typedef struct	s_data
 	void	*mlx_pt;
 	void	*win_pt;
 	void	*img;
-
+	char	*plot_str;
 	int		red;
 
 	char	*addr;
@@ -38,7 +38,6 @@ typedef struct	s_data
 	int		fractal;
 	double	jprm_1;
 	double	jprm_2;
-	char	*plot_str;
 	int		sierpinski;
 	int		mandelbrot;
 	int		julia;

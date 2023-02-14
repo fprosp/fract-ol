@@ -12,23 +12,23 @@
 
 NAME			=	fractal
 
-MAIN			=	./fractal/main.c
-FRACTLIB		=	./fractal/fractlib.a
+MAIN			=	./fractol/main.c
 LIBFT			=	./libft/libft.a
-FT_PRINTF		=	./ft_printf/libftprintf.a
-FRACTAL			= 	./fractal/fractol.a
+FT_PRINTF		=	./ft_printf/printf.a
+FRACTLIB		=	./fractol/fractlib.a
+
 OBJS			=	$(SRCS:.c=.o)
 
 CC				=	gcc
 RM				=	rm -f
-CFLAGS			=	-Wall -Wextra -Werror -Imlx -c
+CFLAGS			=	-Wall -Wextra -Werror -lm
 
-$(NAME):		$(OBJS)
+$(NAME):		
 				make -C ./libft
 				make -C ./ft_printf
-				make -C ./fractal
-				$(CC) $(CFLAGS) -Lmlx -lmlx -framework OpenGL -framework \
-				AppKit -o $(NAME) $(OBJS) $(LIBFT) $(FT_PRINTF) $(FRACTLIB)
+				make -C ./fractol
+				$(CC) $(CFLAGS) $(MLXFLG) $(MAIN) $(LIBFT) \
+				$(FT_PRINTF) $(FRACTLIB) -o $(NAME)
 
 all:			$(NAME)
 				make clean
@@ -36,13 +36,13 @@ all:			$(NAME)
 clean:			
 				make clean -C ./libft
 				make clean -C ./ft_printf
-				make clean -C ./fractal
-				$(RM) $(OBJS) $(OBJS)
+				make clean -C ./fractol
+				$(RM) $(OBJS)
 
 fclean:			clean
-				make fclean -C ./fractal
 				make fclean -C ./libft
 				make fclean -C ./ft_printf
+				make fclean -C ./fractol
 				$(RM) $(NAME)
 
 re:				fclean $(NAME)
