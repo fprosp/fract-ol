@@ -6,11 +6,11 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:56:30 by fprosper          #+#    #+#             */
-/*   Updated: 2023/02/03 18:15:40 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/02/15 12:19:47 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fract-ol.h"
 #define Radius 10	/* convergence domain radius */
 #define Cx 1.80	/* real coordinate of image center */
 #define Cy 0	/*  imaginary coordinate of image center  */

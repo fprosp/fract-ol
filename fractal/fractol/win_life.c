@@ -6,63 +6,18 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 19:06:58 by fprosper          #+#    #+#             */
-/*   Updated: 2023/02/12 18:54:26 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:11:10 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fract-ol.h"
 
-int	close_win(t_data *strc)
-{
-	mlx_destroy_window(strc->mlx_pt, strc->win_pt);
-	exit(EXIT_SUCCESS);
-}
-
-void	my_mlx_pixel_put(t_data *strc)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	strc->red = 0x00FF0000;
-	dst = strc->addr + (strc->y * strc->line_length + strc->x * (strc->bits_per_pixel / 8));
-	*(unsigned int*)dst = strc->red;
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }
 
-int	title_gen(t_data *strc)
-{
-	strc->plot_str = malloc(sizeof(char) * 34);
-	if (!strc->plot_str)
-		return (EXIT_FAILURE);
-	if (strc->sierpinski == 1)
-		strc->plot_str = "Frattale di Sierpinski";
-	else if (strc->mandelbrot == 1)
-		strc->plot_str = "Frattale di Mandelbrot";
-	else if (strc->julia == 1)
-		strc->plot_str = "Frattale di Julia ";
-	return (EXIT_SUCCESS);
-}
 
-int win_init(t_data  *strc)
-{
-	if (title_gen(strc) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-    strc->mlx_pt = mlx_init();
-	if (strc->mlx_pt == NULL)
-	{
-		free(strc->plot_str);
-		return (EXIT_FAILURE);
-	}
-	strc->win_pt = mlx_new_window(strc->mlx_pt, ALT, LARG, strc->plot_str);
-	free(strc->plot_str);
-	strc->img = mlx_new_image(strc->mlx_pt, ALT, LARG);
-	strc->addr = mlx_get_data_addr(strc->img, &strc->bits_per_pixel, &strc->line_length, &strc->endian);
-	if (strc->win_pt == NULL)
-	{
-		free(strc->win_pt);
-		return (EXIT_FAILURE);
-	}
-
-
-	mlx_put_image_to_window(strc->mlx_pt, strc->win_pt, strc->img, 0, 0);
-	mlx_loop(strc->mlx_pt);
-	return (EXIT_SUCCESS);
-}

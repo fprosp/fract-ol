@@ -6,11 +6,25 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 16:13:20 by fprosper          #+#    #+#             */
-/*   Updated: 2023/02/08 15:33:59 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:23:21 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fract-ol.h"
+
+int	title_gen(t_data *strc)
+{
+	strc->plot_str = malloc(sizeof(char) * 34);
+	if (!strc->plot_str)
+		return (EXIT_FAILURE);
+	if (strc->sierpinski == 1)
+		strc->plot_str = "Frattale di Sierpinski";
+	else if (strc->mandelbrot == 1)
+		strc->plot_str = "Frattale di Mandelbrot";
+	else if (strc->julia == 1)
+		strc->plot_str = "Frattale di Julia ";
+	return (EXIT_SUCCESS);
+}
 
 double	atof(const char *str)
 {
@@ -85,5 +99,7 @@ int plot_def(t_data *strc, char **argv)
 				or invalid julia parameter, try again with correct input\n");
 		return (EXIT_FAILURE);
 	}
+	if (title_gen(strc) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
