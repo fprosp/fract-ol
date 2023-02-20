@@ -28,13 +28,11 @@ int	nc_gen(unsigned long ptr)
 int	op(char *a_c, unsigned long ptr, char a, int base)
 {
 	int	i;
-	int	div_int;
 	int	rest_int;
 
 	i = 0;
 	while (ptr > 0)
 	{
-		div_int = ptr / base;
 		rest_int = ptr % base;
 		if (rest_int >= 10)
 			a_c[i] = a + rest_int - 10;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 09:57:28 by mtoia             #+#    #+#             */
-/*   Updated: 2022/09/26 15:51:18 by mtoia            ###   ########.fr       */
+/*   Updated: 2023/02/15 15:08:07 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int	main(int argc, char **argv)
 	arg.argc = argc;
 	arg.argv = argv;
 	input(&d, &arg);
-	init_para(&d);
-	init_mlx(&d);
+	init_para(&d);     											 	// inizializzazione variabili
+	init_mlx(&d);											   		// inizializzazione finestra
 	mlx_hook(d.win_ptr, 2, 1L << 0, keypress, &d);
 	mlx_hook(d.win_ptr, 06, (1L << 6), pro, &d);
 	mlx_hook(d.win_ptr, 17, (1L << 16), ftsclose, &d);

@@ -6,11 +6,52 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:00:08 by fprosper          #+#    #+#             */
-/*   Updated: 2023/02/04 12:28:40 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:03:40 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract-ol.h"
+
+int julia(t_data *strc)
+{
+	return (0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+#include "fractal.h"
 #define Radius 10
 #define Cx 0.7454294
 #define Cy 0.113089
@@ -53,3 +94,6 @@ int main()
 	fclose(fp);
     return (0);
 }
+
+
+*/

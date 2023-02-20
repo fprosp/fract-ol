@@ -10,22 +10,17 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=		ft_printf.c ft_char_gest.c ft_conv_gest.c
-
-OBJS	= 		$(SRCS:.c=.o)
-
-CC		=		 gcc
-RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -I.
-
 NAME			= printf.a
 
+SRCS		=	ft_printf.c ft_char_gest.c ft_conv_gest.c
+
+OBJS		=	 $(SRCS:.c=.o)
+
+CC			=	gcc
+RM			=	rm -f
+CFLAGS		=	-Wall -Wextra -Werror -I.
+
 all:			$(NAME)
-
-INC		= 		ft_printf.h
-
-$(OBJS): %.o: %.c
-	@$(CC) $(FLAGS) -c $< -o $@ -I $(INC)
 
 $(NAME):		$(OBJS)
 				ar rc $(NAME) $(OBJS)

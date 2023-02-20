@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 16:13:20 by fprosper          #+#    #+#             */
-/*   Updated: 2023/02/15 15:23:21 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/02/20 20:12:24 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ int	title_gen(t_data *strc)
 	strc->plot_str = malloc(sizeof(char) * 34);
 	if (!strc->plot_str)
 		return (EXIT_FAILURE);
-	if (strc->sierpinski == 1)
-		strc->plot_str = "Frattale di Sierpinski";
-	else if (strc->mandelbrot == 1)
+	if (strc->mandelbrot == 1)
 		strc->plot_str = "Frattale di Mandelbrot";
 	else if (strc->julia == 1)
 		strc->plot_str = "Frattale di Julia ";
@@ -50,7 +48,7 @@ double	atof(const char *str)
 	return (sign * (int_part + dec_part));
 }
 
-int	jpar_check(char **argv)
+int	par_check(char **argv)
 {
     int i;
 	int	j;
@@ -79,15 +77,12 @@ int	jpar_check(char **argv)
 
 int plot_def(t_data *strc, char **argv)
 {
-	strc->sierpinski = 0;
 	strc->mandelbrot = 0;
 	strc->julia = 0;
-	if (ft_strncmp("sierpinski", argv[1], 10) == 0)
-		strc->sierpinski = 1;
-	else if (ft_strncmp("mandelbrot", argv[1], 10) == 0)
+	if (ft_strncmp("mandelbrot", argv[1], 10) == 0)
 		strc->mandelbrot = 1;
 	else if (ft_strncmp("julia", argv[1], 5) == 0 \
-			&& jpar_check(argv) == 0)
+			&& par_check(argv) == EXIT_SUCCESS)
 	{
 		strc->jprm_1 = atof(argv[2]);
     	strc->jprm_2 = atof(argv[3]);
@@ -95,7 +90,7 @@ int plot_def(t_data *strc, char **argv)
 	}
 	else
 	{
-		ft_printf("You have inserted invalid fractal set name, \
+		ft_printf("You have inserted invalid fractal set name,\
 				or invalid julia parameter, try again with correct input\n");
 		return (EXIT_FAILURE);
 	}
@@ -103,3 +98,4 @@ int plot_def(t_data *strc, char **argv)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
+
