@@ -15,7 +15,7 @@
 
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
-# include "../mlx/mlx.h"
+# include "../mlx_linux/mlx.h"
 # include <math.h>
 # define ALT 500
 # define LARG 500 

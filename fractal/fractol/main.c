@@ -23,9 +23,11 @@ int win_init(t_data  *strc)
 	return (EXIT_SUCCESS);
 }
 
+/*
+
 int plot_exe(t_data *strc)
 {
-	if (win_init(&strc) == EXIT_FAILURE)
+	if (win_init(strc) == EXIT_FAILURE)
 	{
 		free(strc->plot_str);
 		return (EXIT_FAILURE);
@@ -39,6 +41,8 @@ int plot_exe(t_data *strc)
 	return (EXIT_SUCCESS);
 }
 
+*/
+
 int	main(int argc, char **argv)
 {
 	t_data	strc;
@@ -51,8 +55,8 @@ int	main(int argc, char **argv)
 					[sierpinski] or [mandelbroot] or [julia + 'prm_1' 'prm_2']\n");
 		return (EXIT_FAILURE);
 	}
-	if (plot_def(&strc, argv) == EXIT_FAILURE \
-			|| plot_exe(&strc) == EXIT_FAILURE)
+	if (plot_def(&strc, argv) == EXIT_FAILURE /* \
+			|| plot_exe(&strc) == EXIT_FAILURE */ )
 		return (EXIT_FAILURE);
 	
 	mlx_loop(strc.mlx);
