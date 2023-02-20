@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fract-ol.h"
 #define Radius 10
 #define Cx 0.7454294
 #define Cy 0.113089
