@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 10:36:22 by mtoia             #+#    #+#             */
-/*   Updated: 2022/09/23 19:15:42 by mtoia            ###   ########.fr       */
+/*   Updated: 2023/02/21 14:29:54 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	color1(int inter, t_frt *data)
 		return (0xFC0909);
 	else if (inter == ((int)data->maxiterations - 10))
 		return (0xdf210b);
-	return (color2(inter, data));
+	return (0xdf210b);
 }
 
 int	color(int inter, t_frt *data)

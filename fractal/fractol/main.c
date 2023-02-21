@@ -6,30 +6,11 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:41:55 by fprosper          #+#    #+#             */
-/*   Updated: 2023/02/20 19:53:30 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:30:14 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract-ol.h"
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-int win_init(t_data  *strc)
-{
-    strc->mlx = mlx_init();
-	if(!strc->mlx)
-		return (EXIT_FAILURE);
-	strc->mlx = mlx_new_window(strc->mlx, ALT, LARG, strc->plot_str);
-	strc->img = mlx_new_image(strc->mlx, ALT, LARG);
-	strc->addr = mlx_get_data_addr(strc->img, &strc->bits_per_pixel, &strc->line_length, &strc->endian);
-	return (EXIT_SUCCESS);
-}
 
 int plot_exe(t_data *strc)
 {
@@ -60,6 +41,9 @@ int	main(int argc, char **argv)
 	if (plot_def(&strc, argv) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	plot_exe(&strc);
+	mlx_hook(strc.mlx_win, 2, 1L << 0, keypress, &strc);
+	mlx_hook(strc.mlx_win, 17, (1L << 16), ft_close, &strc);
+	mlx_mouse_hook(strc.mlx_win, mousehok, &strc);
 	mlx_loop(strc.mlx);
 	return (EXIT_SUCCESS);
 }

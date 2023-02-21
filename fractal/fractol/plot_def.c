@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 16:13:20 by fprosper          #+#    #+#             */
-/*   Updated: 2023/02/20 20:12:24 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/02/21 14:43:10 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,50 +48,61 @@ double	atof(const char *str)
 	return (sign * (int_part + dec_part));
 }
 
-int	par_check(char **argv)
+int	par_check(char *argv)
 {
     int i;
-	int	j;
 
-    i = 2;
-	j = 0;
-    while (i <= 3)
-    {
-		if (!argv[i])
+    i = 0;
+	if (!argv[i])
+		return (EXIT_FAILURE);
+	while (argv[i] != '\0')
+	{
+		if (ft_isdigit(argv[i]) == 0 \
+				&& argv[i] != ' ' && argv[i] != '-' \
+				&& argv[i] != '+' && argv[i] != '.')
 			return (EXIT_FAILURE);
-        while (argv[i][j] != '\0')
-        {
-            if (ft_isdigit(argv[i][j]) == 0 \
-                	&& argv[i][j] != ' ' && argv[i][j] != '-' \
-					&& argv[i][j] != '+' && argv[i][j] != '.')
-                return (EXIT_FAILURE);
-            if ((argv[i][j]== '-' || argv[i][j] == '+' ) \
-            		&& (ft_isdigit((int)argv[i][j + 1]) == 0 || argv[i][j] == '\0'))
-                return (EXIT_FAILURE);
-            j++;
-        }
-        i++;
-    }
+		if ((argv[i] == '-' || argv[i] == '+' ) \
+				&& (ft_isdigit((int)argv[i + 1]) == 0 || argv[i] == '\0'))
+			return (EXIT_FAILURE);
+		i++;
+	}
 	return (EXIT_SUCCESS);
+}
+
+void	var_init(t_data *strc)
+{
+	strc->mandelbrot = 0;
+	strc->julia = 0;
+	strc->zoom = 0.9;
+	strc->x = 0;
+	strc->y = 0;
+	strc->inc = 2;
 }
 
 int plot_def(t_data *strc, char **argv)
 {
-	strc->mandelbrot = 0;
-	strc->julia = 0;
-	if (ft_strncmp("mandelbrot", argv[1], 10) == 0)
+	var_init(strc);
+	if (ft_strncmp("mandelbrot", argv[1], 10) == 0 \
+			&& par_check(argv[2]) == EXIT_SUCCESS)
+	{
+		strc->mm_inter = ft_atoi(argv[2]);
+		if (strc->mm_inter < 0 || strc->mm_inter > 200)
+			return (EXIT_FAILURE);
 		strc->mandelbrot = 1;
+	}
 	else if (ft_strncmp("julia", argv[1], 5) == 0 \
-			&& par_check(argv) == EXIT_SUCCESS)
+			&& par_check(argv[2]) == EXIT_SUCCESS \
+			&& par_check(argv[3]) == EXIT_SUCCESS)
 	{
 		strc->jprm_1 = atof(argv[2]);
     	strc->jprm_2 = atof(argv[3]);
+		strc->mm_inter = MAX_ITERATIONS;
 		strc->julia = 1;
 	}
 	else
 	{
-		ft_printf("You have inserted invalid fractal set name,\
-				or invalid julia parameter, try again with correct input\n");
+		ft_printf("You have inserted invalid fractal set name, \
+or invalid julia parameter, try again with correct input\n");
 		return (EXIT_FAILURE);
 	}
 	if (title_gen(strc) == EXIT_FAILURE)

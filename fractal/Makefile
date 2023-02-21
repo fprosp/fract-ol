@@ -6,7 +6,7 @@
 #    By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 20:32:19 by fprosper          #+#    #+#              #
-#    Updated: 2023/02/20 19:52:29 by fprosper         ###   ########.fr        #
+#    Updated: 2023/02/20 20:24:46 by fprosper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ $(NAME):
 				make -C ./fractol
 				make -C ./mlx
 				$(CC) $(CFLAGS) $(MLXFLG) -o $(NAME) $(LIBFT) \
-				$(FT_PRINTF) $(FRACTLIB) $(MLX) $(MAIN) 
+				$(FT_PRINTF) $(FRACTLIB) $(MLX) $(MAIN)
 
 all:			$(NAME)
 				make clean
