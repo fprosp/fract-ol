@@ -6,13 +6,13 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:41:55 by fprosper          #+#    #+#             */
-/*   Updated: 2023/02/21 15:30:14 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:13:59 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract-ol.h"
+#include "fractol.h"
 
-int plot_exe(t_data *strc)
+int	plot_exe(t_data *strc)
 {
 	if (win_init(strc) == EXIT_FAILURE)
 	{
@@ -29,7 +29,7 @@ int plot_exe(t_data *strc)
 int	main(int argc, char **argv)
 {
 	t_data	strc;
-	
+
 	strc.argc = argc;
 	strc.argv = argv;
 	if (argc < 2)
@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 	plot_exe(&strc);
 	mlx_hook(strc.mlx_win, 2, 1L << 0, keypress, &strc);
 	mlx_hook(strc.mlx_win, 17, (1L << 16), ft_close, &strc);
-	mlx_mouse_hook(strc.mlx_win, mousehok, &strc);
+	mlx_mouse_hook(strc.mlx_win, mousehook, &strc);
 	mlx_loop(strc.mlx);
 	return (EXIT_SUCCESS);
 }

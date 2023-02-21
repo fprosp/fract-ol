@@ -6,11 +6,11 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 14:28:47 by fprosper          #+#    #+#             */
-/*   Updated: 2023/02/21 14:37:08 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:13:21 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract-ol.h"
+#include "fractol.h"
 
 int	color2(int inter, t_data *data)
 {

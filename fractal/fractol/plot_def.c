@@ -6,25 +6,13 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 16:13:20 by fprosper          #+#    #+#             */
-/*   Updated: 2023/02/21 14:43:10 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:16:41 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract-ol.h"
+#include "fractol.h"
 
-int	title_gen(t_data *strc)
-{
-	strc->plot_str = malloc(sizeof(char) * 34);
-	if (!strc->plot_str)
-		return (EXIT_FAILURE);
-	if (strc->mandelbrot == 1)
-		strc->plot_str = "Frattale di Mandelbrot";
-	else if (strc->julia == 1)
-		strc->plot_str = "Frattale di Julia ";
-	return (EXIT_SUCCESS);
-}
-
-double	atof(const char *str)
+double	ft_atof(const char *str)
 {
 	double	int_part;
 	double	dec_part;
@@ -50,9 +38,9 @@ double	atof(const char *str)
 
 int	par_check(char *argv)
 {
-    int i;
+	int	i;
 
-    i = 0;
+	i = 0;
 	if (!argv[i])
 		return (EXIT_FAILURE);
 	while (argv[i] != '\0')
@@ -79,7 +67,15 @@ void	var_init(t_data *strc)
 	strc->inc = 2;
 }
 
-int plot_def(t_data *strc, char **argv)
+void	jvar_init(t_data *strc)
+{
+	strc->jprm_1 = ft_atof(strc->argv[2]);
+	strc->jprm_2 = ft_atof(strc->argv[3]);
+	strc->mm_inter = MAX_ITERATIONS;
+	strc->julia = 1;
+}
+
+int	plot_def(t_data *strc, char **argv)
 {
 	var_init(strc);
 	if (ft_strncmp("mandelbrot", argv[1], 10) == 0 \
@@ -93,20 +89,12 @@ int plot_def(t_data *strc, char **argv)
 	else if (ft_strncmp("julia", argv[1], 5) == 0 \
 			&& par_check(argv[2]) == EXIT_SUCCESS \
 			&& par_check(argv[3]) == EXIT_SUCCESS)
-	{
-		strc->jprm_1 = atof(argv[2]);
-    	strc->jprm_2 = atof(argv[3]);
-		strc->mm_inter = MAX_ITERATIONS;
-		strc->julia = 1;
-	}
+		jvar_init(strc);
 	else
 	{
 		ft_printf("You have inserted invalid fractal set name, \
 or invalid julia parameter, try again with correct input\n");
 		return (EXIT_FAILURE);
 	}
-	if (title_gen(strc) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
-
