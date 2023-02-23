@@ -6,7 +6,7 @@
 /*   By: fprosper <fprosper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 16:13:20 by fprosper          #+#    #+#             */
-/*   Updated: 2023/02/21 16:16:41 by fprosper         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:14:58 by fprosper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	par_check(char *argv)
 	int	i;
 
 	i = 0;
-	if (!argv[i])
+	if (!argv)
 		return (EXIT_FAILURE);
 	while (argv[i] != '\0')
 	{
@@ -72,7 +72,6 @@ void	jvar_init(t_data *strc)
 	strc->jprm_1 = ft_atof(strc->argv[2]);
 	strc->jprm_2 = ft_atof(strc->argv[3]);
 	strc->mm_inter = MAX_ITERATIONS;
-	strc->julia = 1;
 }
 
 int	plot_def(t_data *strc, char **argv)
@@ -89,7 +88,10 @@ int	plot_def(t_data *strc, char **argv)
 	else if (ft_strncmp("julia", argv[1], 5) == 0 \
 			&& par_check(argv[2]) == EXIT_SUCCESS \
 			&& par_check(argv[3]) == EXIT_SUCCESS)
+	{
+		strc->julia = 1;
 		jvar_init(strc);
+	}
 	else
 	{
 		ft_printf("You have inserted invalid fractal set name, \
